@@ -35,6 +35,7 @@ fn test_encode_minimal() {
         ("\"bread\" & butter", "&quot;bread&quot; &amp; butter"),
         ("< less than", "&lt; less than"),
         ("greater than >", "greater than &gt;"),
+        ("'", "&apos;"),
         ];
 
     for &(input, expected) in data.iter() {
@@ -66,6 +67,7 @@ fn test_decode() {
         ("hej&#x3B;&#x20;hå", "hej; hå"),
         ("&quot;width&#x3A;&#32;3px&#59;&quot;", "\"width: 3px;\""),
         ("&#x2b;", "+"),
+        ("&apos;", "'")
         ];
     for &(input, expected) in data.iter() {
         match decode_html(input) {
